@@ -207,7 +207,8 @@ print(ball_loc_out)
 f16 = (
     ggplot(ball, aes('Location', fill='Outcome')) +
         geom_bar( position='fill') +
-        labs( y = 'Percent of Outcome', title = 'Figure 16: Stacked Bar Chart of Location vs. Outcome') +
+        scale_y_continuous(labels=lambda l: ["%d%%" % (v * 100) for v in l]) + #https://stackoverflow.com/questions/52625307/how-to-change-the-y-axis-to-display-percent-in-python-plotnine-barplot
+        labs(y = 'Percent of Outcome', title = 'Figure 16: Stacked Bar Chart of Location vs. Outcome') +
      theme_bw()   
 )
 f16.save("f16_cohen_Python.png", width = 15, height = 6)
